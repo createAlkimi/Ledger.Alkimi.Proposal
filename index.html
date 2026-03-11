@@ -256,7 +256,7 @@ tfoot td:first-child,tfoot td:nth-child(2){text-align:left;}
   <div class="hero-inner">
     <div class="hero-overline"><span class="overline">Campaign Media Plan</span></div>
     <h1>Programmatic<br><span class="gradient-text">Campaign Proposal</span></h1>
-    <p class="hero-sub">This proactive proposal is built around Ledger's primary goal: bringing new people into the crypto ecosystem, focused on the US. Alkimi connects Ledger with Traditional Finance Investors and Mainstream Consumers through Premium CTV, High Impact 100% Share of Screen (display/video), and OLV to achieve awareness/consideration KPIs. Crypto-native placements are included for a full view into Alkimi's capabilities should Ledger want to deepen consideration.</p>
+    <p class="hero-sub">This proactive proposal is built around Ledger's primary goal: bringing new people into the crypto ecosystem, focused on the US. Alkimi connects Ledger with Traditional Finance Investors and Mainstream Consumers through Premium CTV, High Impact 100% Share of Screen (display/video), and OLV to achieve awareness/consideration KPIs. Crypto-native placements are included for campaigns that also want to deepen consideration.</p>
   </div>
 </section>
 
@@ -390,7 +390,7 @@ tfoot td:first-child,tfoot td:nth-child(2){text-align:left;}
         <tr>
           <td colspan="3" class="foot-label">Grand Total</td>
           <td></td>
-          <td class="foot-ecpm" id="footEcpm" style="color:var(--alkimi-purple-light);font-size:var(--text-body-sm);">—</td>
+          <td class="foot-ecpm" id="footEcpm" style="color:var(--alkimi-purple-light);font-size:var(--text-body-sm);white-space:nowrap;">—</td>
           <td></td>
           <td></td>
           <td class="foot-imp" id="footImpressions">—</td>
@@ -638,8 +638,6 @@ function render(budget) {
     const ctrTd = mkTd(tr, l.ctr ? pc(l.ctr) : 'n/a');
     if (!l.ctr) ctrTd.style.color = 'var(--alkimi-grey-mid)';
     mkTd(tr, im(li));
-    const blTd = mkTd(tr, $f(lb));
-    blTd.style.color = 'var(--alkimi-grey-light)';
     const invTd = mkTd(tr, $f(lb));
     invTd.style.color = 'var(--alkimi-purple-light)';
     invTd.style.fontWeight = '600';
