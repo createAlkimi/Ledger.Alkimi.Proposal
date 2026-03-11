@@ -215,6 +215,15 @@ tfoot td:first-child,tfoot td:nth-child(2){text-align:left;}
 .ai-kb-dl-btn:active{transform:translateY(0);}
 .ai-kb-note{text-align:center;font-size:var(--text-caption);color:var(--alkimi-grey-mid);}
 @media(max-width:900px){.ai-kb-inner{grid-template-columns:1fr;}.ai-kb-card{max-width:520px;}}
+
+.plan-filters{display:flex;align-items:center;gap:var(--space-3);margin-bottom:var(--space-6);}
+.filter-toggle{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:var(--radius-full);border:1px solid rgba(92,38,255,0.35);background:transparent;cursor:pointer;font-family:var(--font-body);font-size:var(--text-caption);font-weight:600;letter-spacing:0.04em;color:var(--alkimi-grey-light);transition:all 0.2s;white-space:nowrap;}
+.filter-toggle:hover{border-color:var(--alkimi-purple);color:var(--alkimi-white);}
+.filter-toggle.active{background:var(--purple-glow-subtle);border-color:var(--alkimi-purple);color:var(--alkimi-white);}
+.filter-toggle .ft-dot{width:7px;height:7px;border-radius:50%;background:var(--alkimi-grey-mid);flex-shrink:0;transition:background 0.2s;}
+.filter-toggle.active .ft-dot{background:var(--alkimi-purple);}
+.filter-label{font-family:var(--font-body);font-size:var(--text-caption);color:var(--alkimi-grey-mid);letter-spacing:0.06em;text-transform:uppercase;}
+
 </style>
 </head>
 <body>
@@ -247,7 +256,7 @@ tfoot td:first-child,tfoot td:nth-child(2){text-align:left;}
   <div class="hero-inner">
     <div class="hero-overline"><span class="overline">Campaign Media Plan</span></div>
     <h1>Programmatic<br><span class="gradient-text">Campaign Proposal</span></h1>
-    <p class="hero-sub">This proactive proposal is built around Ledger's primary goal: bringing new people into the crypto ecosystem - US focused. Alkimi connects Ledger with Traditional Finance Investors and Mainstream Consumers through Premium CTV, High Impact 100% Share of Screen (display/video), and OLV to achieve awareness/consideration KPIs. Crypto-native placements are included for campaigns that also want to deepen consideration.</p>
+    <p class="hero-sub">This proactive proposal is built around Ledger's primary goal: bringing new people into the crypto ecosystem, focused on the US. Alkimi connects Ledger with Traditional Finance Investors and Mainstream Consumers through Premium CTV, High Impact 100% Share of Screen (display/video), and OLV to achieve awareness/consideration KPIs. Crypto-native placements are included for a full view into Alkimi's capabilities should Ledger want to deepen consideration.</p>
   </div>
 </section>
 
@@ -351,6 +360,15 @@ tfoot td:first-child,tfoot td:nth-child(2){text-align:left;}
     <span class="overline">Line Item Breakdown</span>
     <div class="section-rule"></div>
   </div>
+  <div class="plan-filters">
+    <span class="filter-label">View:</span>
+    <button class="filter-toggle active" id="toggleCrypto" onclick="toggleCryptoFilter()">
+      <span class="ft-dot"></span>Full Plan
+    </button>
+    <button class="filter-toggle" id="toggleTradFiOnly" onclick="toggleTradFiFilter()">
+      <span class="ft-dot" style="background:var(--alkimi-purple);"></span>TradFi &amp; CTV Only
+    </button>
+  </div>
 
   <div class="table-wrap">
     <table>
@@ -362,10 +380,8 @@ tfoot td:first-child,tfoot td:nth-child(2){text-align:left;}
           <th>Buying</th>
           <th>CPM</th>
           <th>Viewability</th>
-          <th>VTR</th>
           <th>CTR</th>
           <th>Impressions</th>
-          <th>Budget Level</th>
           <th>Investment</th>
         </tr>
       </thead>
@@ -373,9 +389,11 @@ tfoot td:first-child,tfoot td:nth-child(2){text-align:left;}
       <tfoot>
         <tr>
           <td colspan="3" class="foot-label">Grand Total</td>
-          <td></td><td></td><td></td><td></td><td></td>
-          <td class="foot-imp" id="footImpressions">—</td>
           <td></td>
+          <td class="foot-ecpm" id="footEcpm" style="color:var(--alkimi-purple-light);font-size:var(--text-body-sm);">—</td>
+          <td></td>
+          <td></td>
+          <td class="foot-imp" id="footImpressions">—</td>
           <td class="foot-cost" id="footCost">—</td>
         </tr>
       </tfoot>
@@ -493,30 +511,24 @@ tfoot td:first-child,tfoot td:nth-child(2){text-align:left;}
     <div class="av-icon">✦</div>
     <div style="width:100%;">
       <h4>Alkimi Added Value</h4>
-      <div class="av-items" style="margin-top:var(--space-4);">
+      <p style="margin-bottom:16px;">Through a partnership with Alkimi, the following pieces of added value will be provided:</p>
+      <div class="av-items">
         <div class="av-item">
-          <div class="av-item-dot"></div>
+          <span class="av-item-dot"></span>
           <div>
-            <span class="av-item-title">$50K – $75K</span>
-            <span class="av-item-desc">5% added value</span>
+            <span class="av-item-title">CTV Impressions</span>
+            <span class="av-item-desc">Scaling based on budget investment</span>
           </div>
         </div>
         <div class="av-item">
-          <div class="av-item-dot"></div>
+          <span class="av-item-dot"></span>
           <div>
-            <span class="av-item-title">$75K – $100K</span>
-            <span class="av-item-desc">7.5% added value</span>
+            <span class="av-item-title">Brand Uplift Study</span>
+            <span class="av-item-desc">Measure campaign impact on brand perception</span>
           </div>
         </div>
         <div class="av-item">
-          <div class="av-item-dot"></div>
-          <div>
-            <span class="av-item-title">$100K+</span>
-            <span class="av-item-desc">10% added value</span>
-          </div>
-        </div>
-        <div class="av-item" style="margin-top:var(--space-2);padding-top:var(--space-3);border-top:1px solid rgba(0,232,123,0.15);">
-          <div class="av-item-dot"></div>
+          <span class="av-item-dot"></span>
           <div>
             <span class="av-item-title">AI Visibility Study</span>
             <span class="av-item-desc">Measure share of voice within AI query search results</span>
@@ -550,7 +562,9 @@ const LINES = [
   {geo:'US', color:'#5C26FF', fmt:'video',  tag:'Video',  t:'Video — TradFi Branding · up to :30',             cpm:14,  view:0.95, vtr:0.95, ctr:0.0012, r:0.1538},
   {geo:'US', color:'#5C26FF', fmt:'crypto', tag:'Crypto', t:'Display — Crypto · Alkimi Studio',                cpm:7,   view:0.70, vtr:0.95, ctr:0.0008, r:0.1538}
 ];
-const AV_RATIO = 0.10, AV_CPM = 30;
+const AV_CPM = 30;
+let showCrypto = true;
+function avRatio(b){return b>=100000?0.10:b>=75000?0.075:0.05;}
 
 // ── FORMATTERS ────────────────────────────────────────────────────────
 const $f = v => '$' + Math.round(v).toLocaleString('en-US');
@@ -569,7 +583,7 @@ function geoSep(body, label, color) {
   const sep = document.createElement('tr');
   sep.className = 'row-geo-sep';
   const std = document.createElement('td');
-  std.colSpan = 11;
+  std.colSpan = 9;
   std.innerHTML = `<span style="color:${color};display:inline-flex;align-items:center;gap:8px;"><span style="width:6px;height:6px;border-radius:50%;background:${color};display:inline-block;"></span>${label}</span>`;
   sep.appendChild(std);
   body.appendChild(sep);
@@ -597,7 +611,8 @@ function render(budget) {
   };
   let prevGeo = null;
 
-  LINES.forEach(l => {
+  const activeLines = showCrypto ? LINES : LINES.filter(l => l.fmt !== 'crypto');
+  activeLines.forEach(l => {
     const lb = budget * l.r;
     const li = (lb / l.cpm) * 1000;
     totPaid += lb;
@@ -620,7 +635,6 @@ function render(budget) {
     mkTd(tr, 'CPM');
     mkTd(tr, cp(l.cpm));
     mkTd(tr, pc(l.view));
-    mkTd(tr, pc(l.vtr));
     const ctrTd = mkTd(tr, l.ctr ? pc(l.ctr) : 'n/a');
     if (!l.ctr) ctrTd.style.color = 'var(--alkimi-grey-mid)';
     mkTd(tr, im(li));
@@ -633,28 +647,32 @@ function render(budget) {
   });
 
   geoSep(body, 'ADDED VALUE', 'var(--alkimi-green)');
-  const avVal = budget * AV_RATIO;
+  const avVal = budget * avRatio(budget);
   const avI   = (avVal / AV_CPM) * 1000;
   totImp += avI;
+
+  const avRaw = avRatio(budget) * 100;
+  const avPct = avRaw % 1 === 0 ? avRaw.toFixed(0) : avRaw.toFixed(1);
 
   const avTr = document.createElement('tr');
   avTr.className = 'row-av';
   mkTd(avTr, '');
   mkTd(avTr, '<span class="tag tag--av">Added Value</span>', true);
-  const av1Td = mkTd(avTr, 'Alkimi Added Value — Premium CTV Bonus <span class="av-note">(complimentary)</span>', true);
+  const av1Td = mkTd(avTr, `Alkimi Added Value — ${avPct}% of paid media <span class="av-note">(complimentary)</span>`, true);
   av1Td.style.textAlign = 'left';
   mkTd(avTr, 'CPM');
   mkTd(avTr, cp(AV_CPM));
   mkTd(avTr, pc(0.95));
-  mkTd(avTr, pc(0.95));
   mkTd(avTr, 'n/a').style.color = 'var(--alkimi-grey-mid)';
   mkTd(avTr, im(avI)).style.color = 'var(--alkimi-green)';
-  compCell(avTr);
-  compCell(avTr);
+  const avInvTd = mkTd(avTr, $f(avVal));
+  avInvTd.style.color = 'var(--alkimi-green)';
+  avInvTd.style.fontWeight = '600';
   body.appendChild(avTr);
 
   document.getElementById('footImpressions').textContent = im(totImp);
   document.getElementById('footCost').textContent = $f(totPaid);
+  document.getElementById('footEcpm').textContent = '$' + ((totPaid / totImp) * 1000).toFixed(2);
 
   const ecpm = (totPaid / totImp) * 1000;
   flash('statImpressions', im(totImp));
@@ -715,8 +733,10 @@ function downloadKB() {
     totPaid += lb; totImp += li;
     planRows += `| ${l.t.padEnd(44)} | ${l.tag.padEnd(6)} | $${String(l.cpm).padEnd(5)} | ${fmtUSD(lb).padEnd(9)} | ${fmtImp(li).padEnd(13)} |\n`;
   });
-  const avVal = budget * AV_RATIO;
+  const avVal = budget * avRatio(budget);
   const avImp = (avVal / AV_CPM) * 1000;
+  const avPctRaw = avRatio(budget) * 100;
+  const avPctKB = avPctRaw % 1 === 0 ? avPctRaw.toFixed(0) : avPctRaw.toFixed(1);
   totImp += avImp;
   const ecpm = (totPaid / totImp) * 1000;
 
@@ -756,7 +776,7 @@ Ledger × Alkimi Q2 2026 is a US-focused brand awareness campaign designed to re
 CAMPAIGN PLAN:
 | Line Item                                    | Format | CPM   | Budget     | Est. Impressions |
 |----------------------------------------------|--------|-------|------------|------------------|
-${planRows}| Added Value CTV (${(AV_RATIO*100).toFixed(0)}% complimentary)              | CTV    | $${AV_CPM}   | Compl.     | ${fmtImp(avImp).padEnd(13)}   |
+${planRows}| Added Value CTV (${avPctKB}% complimentary)              | CTV    | $${AV_CPM}   | Compl.     | ${fmtImp(avImp).padEnd(13)}   |
 
 Total paid impressions:              ${fmtImp(totImp - avImp)}
 Total impressions incl. added value: ${fmtImp(totImp)}
@@ -879,6 +899,23 @@ function toggleSiteList() {
   chevron.classList.toggle('open', !isOpen);
   toggle.setAttribute('aria-expanded', String(!isOpen));
 }
+
+function toggleCryptoFilter() {
+  if (showCrypto) return; // already full plan
+  showCrypto = true;
+  document.getElementById('toggleCrypto').classList.add('active');
+  document.getElementById('toggleTradFiOnly').classList.remove('active');
+  render(parseInt(document.getElementById('budgetSlider').value) || 130000);
+}
+
+function toggleTradFiFilter() {
+  if (!showCrypto) return; // already TradFi only
+  showCrypto = false;
+  document.getElementById('toggleTradFiOnly').classList.add('active');
+  document.getElementById('toggleCrypto').classList.remove('active');
+  render(parseInt(document.getElementById('budgetSlider').value) || 130000);
+}
+
 </script>
 </body>
 </html>
